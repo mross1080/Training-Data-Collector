@@ -21,4 +21,9 @@ Open the terminal into this directory and then run
 
 `python collect_arduino_data.py`
 
-The program will ask you to name the file you would like to output your data to.  Make sure you give the file in quotation marks.  The name doesn't really matter, whatever makes you happy.
+The program will ask you to name the file you would like to output your data to.   The name doesn't really matter, whatever makes you happy.  
+
+Start recording some movements on the Arduino.  And then you will see the data come on the screen.  Once you are done Hit
+`ctrl + c`
+
+And your file will be written!

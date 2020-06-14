@@ -25,11 +25,15 @@ def init_serial_connection():
          print("You've got the Arduino Editor Serial Monitor Open!!! Ya gotta close that puppy!")
          exit()
 
+# Automated Method to find proper serial port
 ser = init_serial_connection()
 
 
-output_file = input("Hello Friend, I see you are trying to collect some data from a microcontroller.  \nPlease Enter the name of the file you want to create and hit ENTER \n\n")
+output_file = raw_input("Hello Friend, I see you are trying to collect some data from a microcontroller.  \nPlease Enter the name of the file you want to create and hit ENTER \n\n")
 
+# Add Proper Extension Name in case User forgot it
+if '.csv' not in output_file:
+    output_file = output_file + '.csv'
 
 print("Outputting Data to : " , output_file)
 print("\n\n\n\nReady to recieve training data, please start moving the Arduino.  Hit ctrl + c when you are done! ")
@@ -41,7 +45,9 @@ while True:
         if first_line:
             # Write the CSV Param Header
             file_writer.write("aX,aY,aZ,gX,gY,gZ" + os.linesep)
+            first_line = False
         line = ser.readline().decode().strip(" ").strip("\n")
+
         file_writer.write(line + os.linesep)
         print(line)
 
